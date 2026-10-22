@@ -29,8 +29,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .menu-toggle { display: none; }
 .page { position: relative; padding-left: 11.2%; padding-right: 11.2%; }
 .hero { min-height: 680px; height: var(--panel-height); display: flex; align-items: center; overflow: hidden; padding-top: 0; padding-bottom: 0; color: var(--paper); background: var(--ink); }
-.hero-staff { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.hero-staff path { fill: none; stroke: var(--sand); stroke-width: 1.2; opacity: .48; vector-effect: non-scaling-stroke; }
+.hero-staff { --staff-center: 48%; --staff-step: calc(clamp(43px,5.25vw,70px) * 1.22 / 4); position: absolute; z-index: 1; inset: 0; pointer-events: none; }
+.staff-line { position: absolute; left: 0; right: 0; border-top: 1.5px solid var(--sand); opacity: .58; }
+.staff-line:nth-child(1) { top: calc(var(--staff-center) - var(--staff-step) - var(--staff-step)); }
+.staff-line:nth-child(2) { top: calc(var(--staff-center) - var(--staff-step)); }
+.staff-line:nth-child(3) { top: var(--staff-center); }
+.staff-line:nth-child(4) { top: calc(var(--staff-center) + var(--staff-step)); }
+.staff-line:nth-child(5) { top: calc(var(--staff-center) + var(--staff-step) + var(--staff-step)); }
 .hero-copy { width: 55%; max-width: 650px; position: relative; z-index: 3; margin-top: -12px; }
 .hero .eyebrow { color: var(--sand); }
 .eyebrow { margin: 0 0 23px; color: var(--oak); font-size: 9px; font-weight: 700; letter-spacing: .18em; line-height: 1.6; }
@@ -153,6 +158,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .hero-copy { width: 58%; }
   .hero h1 { font-size: clamp(40px,5.4vw,60px); }
   .hero-art { width: 44%; }
+  .hero-staff { --staff-step: calc(clamp(40px,5.4vw,60px) * 1.22 / 4); }
   .hero-bottom { left: 8%; right: 8%; }
   .intro { grid-template-columns: 12% minmax(0,1fr); gap: 25px; }
   .services { grid-template-columns: .6fr 2.4fr; column-gap: 25px; }
@@ -185,6 +191,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .text-link { gap: 12px; font-size: 10px; }
   .hero-art { inset: auto 0 0 auto; width: 84%; height: 40%; }
   .hero-logo { width: min(34%,145px); top: 23%; }
+  .hero-staff { --staff-center: 69.2%; --staff-step: calc(clamp(39px,10.5vw,54px) * 1.22 / 4); }
   .hero-bottom { left: 7%; right: 7%; bottom: 17px; font-size: 6px; }
   .hero-bottom a { display: none; }
   .home-video-marquee { left: 7%; right: 7%; bottom: 50px; }

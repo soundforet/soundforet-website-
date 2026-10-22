@@ -210,30 +210,57 @@ function renderProjects() {
     card.className = 'work-card';
     const videoId = getYouTubeVideoId(project.link || '');
     if (videoId) {
-      const video = document.createElement('iframe');
-      video.className = 'work-card-video';
-      video.src = `https://www.youtube.com/embed/${videoId}`;
-      video.title = `${project.title} YouTube 영상`;
-      video.loading = 'lazy';
-      video.referrerPolicy = 'strict-origin-when-cross-origin';
-      video.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-      video.allowFullscreen = true;
-      card.append(video);
+      const media = document.createElement('div');
+      media.className = 'work-card-media work-card-media--video';
+      const play = document.createElement('button');
+      play.className = 'work-video-trigger';
+      play.type = 'button';
+      play.setAttribute('aria-label', `${project.title} YouTube 영상 재생`);
+      const poster = document.createElement('img');
+      poster.src = project.image || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+      poster.alt = `${project.title} 대표 이미지`;
+      poster.loading = 'lazy';
+      const playIcon = document.createElement('span');
+      playIcon.className = 'work-video-play-icon';
+      playIcon.setAttribute('aria-hidden', 'true');
+      play.append(poster, playIcon);
+      play.addEventListener('click', () => {
+        const video = document.createElement('iframe');
+        video.className = 'work-card-video';
+        video.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&playsinline=1&rel=0`;
+        video.title = `${project.title} YouTube 영상`;
+        video.loading = 'lazy';
+        video.referrerPolicy = 'strict-origin-when-cross-origin';
+        video.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        video.allowFullscreen = true;
+        media.replaceChildren(video);
+      }, { once: true });
+      media.append(play);
+      card.append(media);
     } else if (project.image) {
       const image = document.createElement('img');
-      image.className = 'work-card-image';
+      image.className = 'work-card-image work-card-media';
       image.src = project.image;
       image.alt = `${project.title} 대표 이미지`;
+      image.loading = 'lazy';
       card.append(image);
     }
     const category = document.createElement('span');
     category.className = 'work-category';
-    category.textContent = project.category + (project.year ? ` · ${project.year}` : '');
+    category.textContent = project.category;
+    const year = document.createElement('span');
+    year.className = 'work-year';
+    year.textContent = project.year || '';
     const title = document.createElement('h3');
     title.textContent = project.title;
     const description = document.createElement('p');
     description.textContent = project.description;
-    card.append(category, title, description);
+    const metadata = document.createElement('div');
+    metadata.className = 'work-card-meta';
+    metadata.append(category);
+    if (project.year) metadata.append(year);
+    card.append(metadata, title);
+    if (project.description) card.append(description);
     if (project.link && !videoId) {
       const link = document.createElement('a');
       link.href = project.link;
@@ -284,6 +311,12 @@ fetch('/api/site')
     renderHomeVideos(Array.isArray(data.homeProjects) ? data.homeProjects : []);
     renderCategories(data.categories || []);
     renderProjects();
+    // The first API render can change the HOME height. Re-align a direct hash
+    // URL after that layout shift so refresh/deep links land on their section.
+    if (window.location.hash.length > 1) {
+      const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      target?.scrollIntoView({ block: 'start', behavior: 'instant' });
+    }
   })
   .catch(() => {
     // Static HTML defaults remain readable if the local server is temporarily unavailable.
