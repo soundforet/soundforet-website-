@@ -24,7 +24,7 @@ html { scroll-padding-top: var(--header-height); }
   height: auto;
   min-height: max(760px, calc(100svh - var(--header-height) - 120px));
   display: grid;
-  grid-template-rows: 1fr auto auto;
+  grid-template-rows: 1fr auto;
   align-content: stretch;
   align-items: stretch;
   overflow: hidden;
@@ -107,7 +107,7 @@ html { scroll-padding-top: var(--header-height); }
   z-index: 4;
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  padding: 26px 0 30px;
+  padding: 26px 0;
   overflow: hidden;
   border-top: 1px solid rgba(218,199,165,.58);
   background: var(--ink);
@@ -178,7 +178,7 @@ html { scroll-padding-top: var(--header-height); }
 
   .hero {
     min-height: max(700px, calc(100svh - var(--header-height)));
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto;
     align-content: start;
     padding-top: 42px;
   }
@@ -228,7 +228,7 @@ html { scroll-padding-top: var(--header-height); }
   .hero .text-link { min-height: 44px; font-size: 11px; }
   .hero-art { display: none; }
 
-  .home-video-marquee { padding: 20px 0 24px; }
+  .home-video-marquee { padding: 20px 0; }
   .home-video-viewport { padding-inline: var(--editorial-gutter); }
   .home-video-track, .home-video-group { gap: 10px; }
   .home-video-group { padding-right: 10px; }
@@ -286,9 +286,9 @@ html { scroll-padding-top: var(--header-height); }
   align-self: end;
   display: block;
   margin: 0 0 5px;
-  padding: 22px 0 0 26px;
+  padding: 22px 0 0;
   border-top: 1px solid var(--sand);
-  border-left: 1px solid var(--sand);
+  border-left: 0;
 }
 
 .intro-bottom > div { max-width: 440px; }
