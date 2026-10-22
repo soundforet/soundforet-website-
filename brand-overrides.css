@@ -1,0 +1,7 @@
+/* Brand typography fallback: Futura PT is preferred when locally available. */
+:root { --brand-en: "Futura PT", "Century Gothic", "DM Sans", sans-serif; }
+
+/* Public static export refinements from browser review. */
+.hero-logo { top: 43%; }
+.art-caption, .service-process { display: none !important; }
+.submit-button { justify-content: space-between; padding: 14px 16px; border: 1px solid var(--sand); border-radius: 0; }

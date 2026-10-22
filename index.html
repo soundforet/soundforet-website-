@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#EEE4D5">
+  <meta name="description" content="작사와 작곡, 편곡을 중심으로 광고·영상·게임·이벤트와 개인 창작을 위한 음악을 기획하고 제작하는 Sound Foret입니다.">
+  <title>Sound Foret — 사운드 포레 | 음악 제작</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="brand-overrides.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Sound Foret 사운드 포레 홈">
+      <img class="brand-symbol" src="assets/sound-foret-mark.png" alt="">
+      <span class="brand-words"><span class="brand-english">Sound Foret</span><span class="brand-korean">사운드 포레</span></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mainNav"><i></i><i></i></button>
+    <nav class="main-nav" id="mainNav" aria-label="주요 메뉴">
+      <a href="#about">ABOUT</a>
+      <a href="#services">SERVICES</a>
+      <a href="#works">WORKS</a>
+      <a href="#contact">CONTACT</a>
+      <a class="nav-ko" href="#contact">프로젝트 문의하기 <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero page" id="home" aria-labelledby="heroTitle">
+      <svg class="hero-staff" viewBox="0 0 1000 700" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 354 H1000" /><path d="M0 366 H1000" /><path d="M0 378 H1000" />
+        <path d="M0 390 H1000" /><path d="M0 402 H1000" />
+      </svg>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span>MUSIC · COMPOSITION · ARRANGEMENT</p>
+        <h1 id="heroTitle"><span class="hero-title-line">필요한 음악을,</span><span class="hero-title-line">목적에 맞게 만듭니다<span class="hero-period">.</span></span></h1>
+        <p class="hero-desc" id="heroDescription">작사와 작곡, 편곡을 중심으로 광고와 영상, 게임, 이벤트, 개인 창작을 위한 음악을 기획하고 제작합니다. 프로젝트의 목적과 분위기에 맞는 음악을 함께 완성합니다.</p>
+        <div class="hero-actions"><a class="text-link" href="#services">서비스 알아보기 <span aria-hidden="true">↘</span></a><a class="text-link" href="#contact">프로젝트 문의하기 <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div class="hero-art" aria-label="사운드 포레의 나무결 심벌">
+        
+        <img class="hero-logo" src="assets/sound-foret-mark-light.png" alt="">
+      </div>
+      <div class="home-video-marquee" id="homeVideoMarquee" aria-label="메인 화면 추천 영상" hidden>
+        <div class="home-video-viewport"><div class="home-video-track" id="homeVideoTrack"></div></div>
+      </div>
+      <div class="hero-bottom"><span>MUSIC FOR YOUR MOMENT</span><a href="#about">SCROLL TO EXPLORE ↓</a></div>
+    </section>
+
+    <section class="intro page" id="about" aria-labelledby="aboutTitle">
+      <div class="intro-content">
+        <p class="eyebrow">MUSIC, MADE WITH PURPOSE</p>
+        <h2 id="aboutTitle">음악의 목적부터<br>완성까지.</h2>
+        <div class="intro-bottom">
+          <div><p class="about-lead" id="aboutLead">Sound Foret은 음악이 필요한 사람과 프로젝트를 위해 곡을 만들고 음악을 설계합니다.</p><p id="aboutDescription">작사와 작곡부터 편곡, 콘텐츠에 맞는 음악 제작까지 각 프로젝트의 목적과 방향을 고려해 작업합니다.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services page" id="services" aria-labelledby="servicesTitle">
+      <div class="section-heading"><p class="eyebrow">WHAT WE CAN MAKE TOGETHER</p><h2 id="servicesTitle">필요한 음악을<br>함께 설계합니다.</h2><p class="section-lead">작사·작곡·편곡을 중심으로, 개인 창작부터 브랜드와 미디어까지<br>사용 목적에 맞는 음악을 함께 만듭니다.</p></div>
+      <div class="service-list">
+        <article class="service-item"><div><p class="service-en">SONGWRITING &amp; COMPOSITION</p><h3 data-copy="service_1_title">작사 · 작곡</h3><p data-copy="service_1_description">가사와 멜로디 구상부터 보컬곡·연주곡의 작사와 작곡을 진행합니다.</p></div><a class="service-icon" href="#contact" aria-label="작사 작곡 문의">↗</a></article>
+        <article class="service-item"><div><p class="service-en">ARRANGEMENT &amp; MUSIC PRODUCTION</p><h3 data-copy="service_2_title">편곡 · 음악 제작</h3><p data-copy="service_2_description">기존 곡이나 데모를 원하는 분위기와 사용 환경에 맞춰 편곡하고 음악을 제작합니다.</p></div><a class="service-icon" href="#contact" aria-label="편곡 음악 제작 문의">↗</a></article>
+        <article class="service-item"><div><p class="service-en">CUSTOM SONG</p><h3 data-copy="service_3_title">맞춤형 음악</h3><p data-copy="service_3_description">결혼식·축가와 기념일을 위해 사연과 메시지를 담은 맞춤 노래를 제작합니다.</p></div><a class="service-icon" href="#contact" aria-label="맞춤형 음악 문의">↗</a></article>
+        <article class="service-item"><div><p class="service-en">ADVERTISING &amp; BRAND MUSIC</p><h3 data-copy="service_4_title">광고 · 브랜드 음악</h3><p data-copy="service_4_description">광고·브랜드 영상, 징글, 기업 콘텐츠와 공간의 목적에 맞는 음악을 기획·제작합니다.</p></div><a class="service-icon" href="#contact" aria-label="광고 브랜드 음악 문의">↗</a></article>
+        <article class="service-item"><div><p class="service-en">VIDEO, GAMES &amp; CONTENT</p><h3 data-copy="service_5_title">영상 · 게임 · 콘텐츠 음악</h3><p data-copy="service_5_description">영상·게임·유튜브·팟캐스트 등 콘텐츠의 장면과 흐름에 맞춘 음악을 제작합니다.</p></div><a class="service-icon" href="#contact" aria-label="영상 게임 콘텐츠 음악 문의">↗</a></article>
+      </div>
+      </section>
+
+    <section class="works page" id="works" aria-labelledby="worksTitle">
+      <div class="works-top"><div><p class="eyebrow">SELECTED WORKS</p><h2 id="worksTitle">음악으로 완성할<br>프로젝트를 기다립니다.</h2></div></div>
+      <ul class="work-categories" id="workCategories" aria-label="작업 분류"></ul>
+      <div class="works-grid" id="worksGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="contact page" id="contact" aria-labelledby="contactTitle">
+      <div class="contact-layout">
+        <div><p class="eyebrow">LET'S TALK ABOUT YOUR PROJECT</p><h2 id="contactTitle">프로젝트에 대해<br>이야기해 주세요<span>.</span></h2><p class="contact-intro" id="contactDescription">만들고 싶은 음악과 사용 목적을 알려 주세요. 프로젝트의 방향과 필요한 작업 범위를 확인할 수 있도록 안내합니다.</p><div class="contact-info"><span>PROJECT INQUIRY</span><strong id="contactFooterCopy">음악이 필요한 순간에, 목적에 맞는 음악을 만듭니다.</strong></div></div>
+        <form class="contact-form" id="contactForm">
+          
+          <label class="form-trap" aria-hidden="true">웹사이트<input name="website" tabindex="-1" autocomplete="off"></label>
+          <label>문의할 프로젝트 <span class="optional">선택 · 직접 입력하거나 지울 수 있습니다</span><input name="project_title" maxlength="160" placeholder="프로젝트 제목"></label>
+          <label>이름 또는 업체명 <input name="name" autocomplete="name" required placeholder="성함 또는 업체명"></label>
+          <label>이메일 <span class="optional">휴대폰 번호와 둘 중 하나 필수</span><input type="email" name="email" autocomplete="email" placeholder="회신받으실 이메일"></label>
+          <label>휴대폰 번호 <span class="optional">이메일과 둘 중 하나 필수</span><input type="tel" name="phone" autocomplete="tel" placeholder="010-0000-0000"></label>
+          <label>문의 유형 <select name="type" required><option value="" disabled selected>선택해 주세요</option><option>맞춤형 음악</option><option>광고·브랜드 음악</option><option>영상·콘텐츠 음악</option><option>기타</option></select></label>
+          <label>음악 사용 목적 <textarea name="purpose" required rows="2" maxlength="3000" placeholder="음악이 사용될 곳과 전달하고 싶은 분위기를 적어 주세요"></textarea></label>
+          <label>희망 일정 <span class="optional">선택</span><input type="text" name="schedule" maxlength="300" placeholder="예: 2026년 12월"></label>
+          <label>예산 <span class="optional">선택</span><select name="budget"><option value="">선택하지 않음</option><option>100만 원 미만</option><option>100만~300만 원</option><option>300만~500만 원</option><option>500만 원 이상</option><option>협의 희망</option></select></label>
+          <label>상세 내용 <textarea name="message" required rows="4" maxlength="5000" placeholder="원하는 작업 범위와 참고할 내용을 적어 주세요"></textarea></label>
+          <label>참고 링크 <span class="optional">선택</span><input type="url" name="reference" maxlength="1000" placeholder="https://"></label>
+          <button class="submit-button" type="submit">이메일 문의 초안 만들기 <span aria-hidden="true">↗</span></button>
+          <p class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#home" aria-label="Sound Foret 사운드 포레 홈"><img class="brand-symbol" src="assets/sound-foret-mark.png" alt=""><span class="brand-words"><span class="brand-english">Sound Foret</span><span class="brand-korean">사운드 포레</span></span></a>
+    <span class="footer-business" id="footerCopy">음악이 필요한 순간에, 목적에 맞는 음악을 만듭니다.</span>
+    <address class="footer-legal" aria-label="사업자 정보">
+      <span>사업자명 사운드 포레 · 사업자등록번호 685-27-02257</span>
+      <span>사업장 주소 경기도 양주시 덕계로 4길 4 817호</span>
+      <span>문의 <a href="mailto:contact@soundforet.com">contact@soundforet.com</a></span>
+    </address>
+    <nav class="footer-nav" aria-label="하단 메뉴"><a href="#about">ABOUT</a><a href="#services">SERVICES</a><a href="#works">WORKS</a><a href="#contact">CONTACT</a></nav>
+    <span class="copyright">© 2026 SOUND FORET. ALL RIGHTS RESERVED.</span>
+    <a href="#home" class="back-top">BACK TO TOP ↑</a>
+  </footer>
+  <script src="site-data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
