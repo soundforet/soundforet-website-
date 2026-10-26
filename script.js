@@ -8,6 +8,17 @@ function setMenuOpen(open) {
 }
 
 menuButton.addEventListener('click', () => setMenuOpen(menuButton.getAttribute('aria-expanded') !== 'true'));
+// Keep the fixed channel shortcut from covering the inquiry form or footer.
+const kakaoFloatingLink = document.querySelector('.kakao-floating-link');
+const visibleContactAreas = new Set();
+const contactAreaObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) visibleContactAreas.add(entry.target);
+    else visibleContactAreas.delete(entry.target);
+  });
+  kakaoFloatingLink.hidden = visibleContactAreas.size > 0;
+});
+document.querySelectorAll('#contact, .site-footer').forEach(area => contactAreaObserver.observe(area));
 nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenuOpen(false)));
 document.addEventListener('keydown', event => { if (event.key === 'Escape') setMenuOpen(false); });
 
@@ -40,22 +51,36 @@ const homeVideoMarquee = document.querySelector('#homeVideoMarquee');
 const homeVideoTrack = document.querySelector('#homeVideoTrack');
 let allProjects = [];
 let activeCategory = 'ALL';
+const WORKS_PAGE_SIZE = 8;
+let visibleProjectCount = WORKS_PAGE_SIZE;
+const worksLoadMore = document.querySelector('#worksLoadMore');
+worksLoadMore.addEventListener('click', () => {
+  visibleProjectCount += WORKS_PAGE_SIZE;
+  renderProjects({ append: true });
+});
 let homePlayerId = 0;
 let homePlayerWindow = null;
 let homePlayerReady = false;
 let homeListenerTimer = null;
 
-function renderCategories(categories) {
+function projectFilterCategory(category) {
+  if (['MUSIC', 'ORIGINAL MUSIC', 'CUSTOM SONG'].includes(category)) return 'MUSIC';
+  if (['VIDEO', 'VIDEO & GAME'].includes(category)) return 'VIDEO';
+  return 'ETC';
+}
+
+function renderCategories() {
   workCategories.replaceChildren();
-  ['ALL', ...categories].forEach(category => {
+  ['ALL', 'MUSIC', 'VIDEO', 'ETC'].forEach(category => {
     const item = document.createElement('li');
     const button = document.createElement('button');
     button.type = 'button';
-    button.textContent = category === 'ALL' ? 'ALL WORKS' : category;
+    button.textContent = category;
     button.setAttribute('aria-pressed', String(activeCategory === category));
     button.addEventListener('click', () => {
       activeCategory = category;
-      renderCategories(categories);
+      visibleProjectCount = WORKS_PAGE_SIZE;
+      renderCategories();
       renderProjects();
     });
     item.append(button);
@@ -202,10 +227,11 @@ window.addEventListener('resize', () => {
   }, 150);
 });
 
-function renderProjects() {
-  const filtered = activeCategory === 'ALL' ? allProjects : allProjects.filter(project => project.category === activeCategory);
-  worksGrid.replaceChildren();
-  filtered.forEach(project => {
+function renderProjects({ append = false } = {}) {
+  const filtered = activeCategory === 'ALL' ? allProjects : allProjects.filter(project => projectFilterCategory(project.category) === activeCategory);
+  const start = append ? worksGrid.children.length : 0;
+  if (!append) worksGrid.replaceChildren();
+  filtered.slice(start, visibleProjectCount).forEach(project => {
     const card = document.createElement('article');
     card.className = 'work-card';
     const videoId = getYouTubeVideoId(project.link || '');
@@ -272,6 +298,7 @@ function renderProjects() {
     worksGrid.append(card);
   });
   worksGrid.hidden = filtered.length === 0;
+  worksLoadMore.hidden = visibleProjectCount >= filtered.length;
 }
 
 function prefillProjectInquiry() {
