@@ -1007,6 +1007,40 @@ html { scroll-padding-top: var(--header-height); }
   .back-top { justify-self: start; }
 }
 
+/* Kakao channel home links: ordinary HTTPS navigation on every device. */
+.kakao-channel-link,
+.kakao-floating-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 44px;
+  padding: 11px 16px;
+  border: 1px solid var(--sand);
+  color: var(--paper);
+  background: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.kakao-channel-link { margin-top: 20px; }
+.kakao-channel-link span,
+.kakao-floating-link span { color: var(--sand); }
+.kakao-channel-link:hover,
+.kakao-floating-link:hover { background: #50382C; }
+.kakao-floating-link {
+  position: fixed;
+  z-index: 20;
+  right: max(20px, env(safe-area-inset-right));
+  bottom: max(20px, env(safe-area-inset-bottom));
+  max-width: calc(100vw - 32px);
+  box-shadow: 0 4px 16px rgba(58,39,31,.16);
+}
+@media (max-width: 640px) {
+  .kakao-channel-link { margin-top: 16px; }
+  .kakao-floating-link { right: 16px; bottom: max(12px, env(safe-area-inset-bottom)); font-size: 12px; padding: 10px 13px; }
+}
+
 /* Public static export refinements from browser review. */
 .art-caption { display: none !important; }
 .submit-button { justify-content: space-between; padding: 14px 16px; border: 1px solid var(--sand); border-radius: 0; }
